@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default-deny everything. No collections exist yet, and no client
+    // code reads or writes Firestore in Step 1. We start locked down and
+    // open specific, narrow access in later steps as each feature needs it.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
